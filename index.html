@@ -5,7 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="rps.js"></script>
+    <script src="rps.js" defer></script>
   </head>
-  <body></body>
+  <body style="background-color: darkcyan; color: white">
+    <h1 style="text-align: center">Let's play rock, paper, scissors!</h1>
+    <div
+      class="move-container"
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 100px;
+        padding-bottom: 16px;
+      "
+    >
+      <div style="display: flex; gap: 8px">
+        <h3>Your choice:</h3>
+        <h3 class="player-choice"></h3>
+      </div>
+      <div style="display: flex; gap: 8px">
+        <h3>Computer choice:</h3>
+        <h3 class="computer-choice"></h3>
+      </div>
+    </div>
+    <div
+      class="result-container"
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        padding-bottom: 16px;
+      "
+    >
+      <div>
+        <h3 style="text-align: center; padding: 0; margin: 0">Result:</h3>
+        <h3 class="result" style="text-align: center; padding: 0; margin: 0">
+          NA
+        </h3>
+      </div>
+      <div>
+        <h3 style="text-align: center; padding: 0; margin: 0">Score:</h3>
+        <h3 class="score" style="text-align: center; padding: 0; margin: 0">
+          0 - 0
+        </h3>
+      </div>
+    </div>
+    <div
+      class="container"
+      style="display: flex; justify-content: center; gap: 16px"
+    >
+      <button id="play" class="Rock">Rock</button>
+      <button id="play" class="Paper">Paper</button>
+      <button id="play" class="Scissors">Scissors</button>
+    </div>
+    <h1 class="final-text" style="text-align: center"></h1>
+    <div
+      class="button-div"
+      style="display: flex; justify-content: center"
+    ></div>
+  </body>
 </html>

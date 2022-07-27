@@ -39,14 +39,64 @@ const playRound = (playerSelecetion, computerSelection) => {
   }
 }
 
-let score = 0
-for (let i = 0; i < 5; i++) {
-  let user = prompt('Type what you want to play (rock, paper, scissors): ')
-  let comp = getComputerChoice()
-  console.log(comp)
-  let result = playRound(user, comp)
+let playerScore = 0
+let computerScore = 0
+const resultText = document.querySelector('.result')
+const scoreText = document.querySelector('.score')
+const playerChoice = document.querySelector('.player-choice')
+const computerChoice = document.querySelector('.computer-choice')
+const finalText = document.querySelector('.final-text')
+const buttonDiv = document.querySelector('.button-div')
+const rematchBtn = document.createElement('button')
+rematchBtn.textContent = 'Rematch'
+
+const buttons = document.querySelectorAll('button#play')
+const btnClickHandler = (e) => {
+  const comp = getComputerChoice()
+  const result = playRound(e.target.innerHTML, comp)
+  playerChoice.innerHTML = e.target.innerHTML.toLowerCase()
+  computerChoice.innerHTML = comp
+  resultText.innerHTML = result
   if (result === 'win') {
-    score += 1
+    playerScore++
+    if (playerScore >= 5) {
+      finalText.innerHTML = 'WINNER!'
+      buttons.forEach((button) => {
+        button.disabled = true
+        buttonDiv.appendChild(rematchBtn)
+      })
+    }
   }
+  if (result === 'lose') {
+    computerScore++
+    if (computerScore >= 5) {
+      finalText.innerHTML = 'LOSER!'
+      buttons.forEach((button) => {
+        button.disabled = true
+        buttonDiv.appendChild(rematchBtn)
+      })
+    }
+  }
+  scoreText.innerHTML = `${playerScore} - ${computerScore}`
 }
-console.log(`User score: ${score} | Computer score: ${5 - score}`)
+
+buttons.forEach((button) => {
+  button.addEventListener('click', btnClickHandler)
+})
+
+const rematchHandler = () => {
+  location.reload()
+  return false
+}
+
+rematchBtn.addEventListener('click', rematchHandler)
+
+// for (let i = 0; i < 5; i++) {
+//   let user = prompt('Type what you want to play (rock, paper, scissors): ')
+//   let comp = getComputerChoice()
+//   console.log(comp)
+//   let result = playRound(user, comp)
+//   if (result === 'win') {
+//     score += 1
+//   }
+// }
